@@ -1,18 +1,26 @@
 import React, {Component} from 'react';
     
 class ChatBar extends Component {
+  _handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      this.props.updateMessageList(e);
+      e.target.value=""; // clear text box after sending message.
+    }
+  }
 
   render() {
-    // console.log("Rendering <ChatBar/>");
     return (
     <footer className="chatbar">
-        <input className="chatbar-username" placeholder="Your Name (Optional)" 
-        defaultValue={this.props.currentUser}  //immutable so set to defaultValue
+        <input 
+          className="chatbar-username" 
+          placeholder="Your Name (Optional)" 
+          defaultValue={this.props.currentUser}  //immutable so set to defaultValue
         />
-        <input className="chatbar-message" placeholder="Type a message and hit ENTER"
+        <input 
+          className="chatbar-message" 
+          placeholder="Type a message and hit ENTER"
           type="text"
-          // value = {this.props.newMessage}
-          onKeyPress={this.props.updateMessageList}
+          onKeyPress={this._handleKeyPress}
         />
     </footer>
     );
