@@ -5,8 +5,10 @@ import ChatBar from './ChatBar.jsx';
 export default class App extends Component {
   constructor(props) {
     super(props);
+//initial state of app.jsx
     this.state = {
       currentUser: {name: 'Bob'},
+      newMessage: '',
       messages: [
         {
           id: 1,
@@ -20,7 +22,20 @@ export default class App extends Component {
         }
       ]
     };
+//function for updating message list.
+    this.updateMessageList = (e) => {
+      if (e.key === 'Enter') {
+        const newMessage = {
+          id: this.state.messages.length+1,
+          username: this.state.currentUser.name,
+          content: e.target.value
+        }
+        const messages = this.state.messages.concat(newMessage);
+        this.setState({messages: messages});
+      }
+    }
   }
+//testing a rende rof a new message staticly.
   componentDidMount() {
     console.log('componentDidMount <App />');
     setTimeout(() => {
@@ -33,8 +48,8 @@ export default class App extends Component {
       this.setState({messages: messages})
     }, 3000);
   }
+  
   render() {
-    
     // console.log('rendinger <App />');
     return (
       <div>
@@ -43,7 +58,10 @@ export default class App extends Component {
         <p>Hello {this.state.currentUser.name} ! </p>
       </nav>
       <MessageList messages={this.state.messages}/>
-      <ChatBar currentUser={this.state.currentUser.name} />
+      <ChatBar 
+        currentUser={this.state.currentUser.name}
+        updateMessageList={this.updateMessageList} 
+        />
       </div>
     );
   }
