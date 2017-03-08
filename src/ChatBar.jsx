@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 class ChatBar extends Component {
   _handleKeyPress = (e) => {
     if (e.key === 'Enter') {
-      this.props.updateMessageList(e);
+      this.props.sendMessage(e);
       e.target.value=""; // clear text box after sending message.
     }
   }
@@ -14,7 +14,9 @@ class ChatBar extends Component {
         <input 
           className="chatbar-username" 
           placeholder="Your Name (Optional)" 
-          defaultValue={this.props.currentUser}  //immutable so set to defaultValue
+          type="text"
+          // defaultValue={this.props.currentUser}  //immutable so set to defaultValue
+          onKeyPress={this.props.updateUsername}
         />
         <input 
           className="chatbar-message" 

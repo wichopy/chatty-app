@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Message from './Message.jsx';
+import Notification from './Notification.jsx';
 
 class MessageList extends Component {
   render() {
@@ -9,7 +10,12 @@ class MessageList extends Component {
     <main className="messages">
       { 
         this.props.messages.map( (messageObj) => {
-          return <Message key={messageObj.id} username={messageObj.username} content={messageObj.content} />
+          if (messageObj.type == 'incomingMessage') {
+            return <Message key={messageObj.id} username={messageObj.username} content={messageObj.content} />
+          }
+          if (messageObj.type == 'incomingNotification'){
+            return <Notification  key={messageObj.id} username={messageObj.username} content={messageObj.content} />
+          }
         })
       }
     </main>
