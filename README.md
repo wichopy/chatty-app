@@ -1,3 +1,5 @@
+![alt text](https://github.com/wichopy/chatty-app/blob/master/Selection_003.png "Latest Screenshot")
+
 React Boilerplate
 =====================
 
