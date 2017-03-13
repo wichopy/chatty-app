@@ -1,6 +1,13 @@
 import React, {Component} from 'react';
-    
+ 
+/**
+ * 
+ * 
+ * @class ChatBar
+ * @extends {Component}
+ */
 class ChatBar extends Component {
+
   _handleKeyPress = (e) => {
     if (e.key === 'Enter') {
       this.props.sendMessage(e);

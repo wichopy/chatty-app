@@ -1,10 +1,17 @@
 import React, {Component} from 'react';
 import MessageList from './MessageList.jsx';
 import ChatBar from './ChatBar.jsx';
-
 //start of App component class.
+
+/**
+ * 
+ * 
+ * @export
+ * @class App
+ * @extends {Component}
+ */
 export default class App extends Component {
-//start of state constructor
+
   constructor(props) {
     super(props);
     this.state = {
@@ -15,9 +22,6 @@ export default class App extends Component {
       messages: [],
       currentUserCount: 0
     };
-    //NOTIFICATION LIBRARY:
-    //namechange - user change's his username in chatroom.
-    //function for updating username
     this.updateUsername = (e) => {
       if (e.key === 'Enter') {
         if (e.target.value) {
@@ -49,6 +53,10 @@ export default class App extends Component {
         }
       }
     }
+    //NOTIFICATION LIBRARY:
+    //namechange - user change's his username in chatroom.
+    //function for updating username
+    
     //make one protocol for messages and one for notifications??
     this.newMessageFromServer = (data) => {
       let parsedData = JSON.parse(data);
